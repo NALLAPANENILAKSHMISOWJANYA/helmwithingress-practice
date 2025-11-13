@@ -32,7 +32,7 @@ jobs:
           context: ./PATIENTAPI-SPRINGBOOT
           file: ./PATIENTAPI-SPRINGBOOT/backend.Dockerfile
           push: true
-          tags: ${{ secrets.DOCKER_USERNAME }}/ingressp1-backend:latest
+          tags: ${{ secrets.DOCKER_USER }}/ingressp1-backend:latest
 
       # Step 5 — Build & Push Frontend Image
       - name: Build and Push Frontend Image
@@ -41,4 +41,4 @@ jobs:
           context: ./PATIENTAPI-REACT
           file: ./PATIENTAPI-REACT/frontend.Dockerfile
           push: true
-          tags: ${{ secrets.DOCKER_USERNAME }}/ingressp1-frontend:latest
+          tags: ${{ secrets.DOCKER_USER }}/ingressp1-frontend:latest
