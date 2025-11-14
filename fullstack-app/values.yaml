@@ -6,7 +6,7 @@ namespace: fullstack-app
 mysql:
   image: mysql:8.0
   rootPassword: password
-  database: projectdb
+  database: patientdb
   service:
     port: 3306
     type: ClusterIP   # Only accessible inside the cluster
