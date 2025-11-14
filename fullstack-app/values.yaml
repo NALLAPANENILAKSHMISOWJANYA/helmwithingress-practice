@@ -1,6 +1,13 @@
 namespace: fullstack-app
 
 # =====================
+# Ingress Configuration
+# =====================
+ingress:
+  enabled: true
+  host: localhost   # or your Minikube IP if not using localhost
+
+# =====================
 # MySQL Configuration
 # =====================
 mysql:
@@ -9,7 +16,7 @@ mysql:
   database: patientdb
   service:
     port: 3306
-    type: ClusterIP   # Only accessible inside the cluster
+    type: ClusterIP
 
 # =====================
 # Backend Configuration
@@ -18,7 +25,7 @@ backend:
   image: nallapanenilakshmisowjanya/ingressp1-backend:latest
   replicas: 2
   port: 2000
-  nodePort: 30002
+  nodePort: 30001
   resources:
     requests:
       cpu: "100m"
@@ -39,7 +46,7 @@ frontend:
   image: nallapanenilakshmisowjanya/ingressp1-frontend:latest
   replicas: 2
   port: 80
-  nodePort: 30001
+  nodePort: 30002
   resources:
     requests:
       cpu: "100m"
@@ -52,4 +59,6 @@ frontend:
     minReplicas: 2
     maxReplicas: 5
     targetCPUUtilizationPercentage: 50
-  apiUrl: "http://localhost:30002"  # Backend NodePort
+
+  # Point frontend to backend service
+  apiUrl: "/patientapi"
