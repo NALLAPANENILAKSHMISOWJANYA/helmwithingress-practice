@@ -20,7 +20,7 @@ spec:
                   number: 80
 
           # Backend served at /backend/
-          - path: /api
+          - path: /patientapi
             pathType: Prefix
             backend:
               service:
