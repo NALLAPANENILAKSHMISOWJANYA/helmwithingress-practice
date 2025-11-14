@@ -22,10 +22,10 @@ mysql:
 # Backend Configuration
 # =====================
 backend:
-  image: nallapanenilakshmisowjanya/k8-backend:latest
+  image: nallapanenilakshmisowjanya/ingressp1-backend:latest
   replicas: 2
   port: 2000
-  nodePort: 30025
+  nodePort: 30088
   resources:
     requests:
       cpu: "100m"
@@ -43,10 +43,10 @@ backend:
 # Frontend Configuration
 # =====================
 frontend:
-  image: nallapanenilakshmisowjanya/k8-frontend:latest
+  image: nallapanenilakshmisowjanya/ingressp1-frontend:latest
   replicas: 2
   port: 80
-  nodePort: 30080
+  nodePort: 30087
   resources:
     requests:
       cpu: "100m"
@@ -61,4 +61,4 @@ frontend:
     targetCPUUtilizationPercentage: 50
 
   # Point frontend to backend service
-  apiUrl: "/api"
+  apiUrl: "/patientapi"
