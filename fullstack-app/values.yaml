@@ -15,10 +15,10 @@ mysql:
 # Backend Configuration
 # =====================
 backend:
-  image: suryakiran1993/k8-backend:latest
+  image: nallapanenilakshmisowjanya/ingressp1-backend:latest
   replicas: 2
   port: 2000
-  nodePort: 30025
+  nodePort: 30002
   resources:
     requests:
       cpu: "100m"
@@ -36,10 +36,10 @@ backend:
 # Frontend Configuration
 # =====================
 frontend:
-  image: suryakiran1993/k8-frontend:latest
+  image: nallapanenilakshmisowjanya/ingressp1-frontend:latest
   replicas: 2
   port: 80
-  nodePort: 30080
+  nodePort: 30001
   resources:
     requests:
       cpu: "100m"
@@ -52,4 +52,4 @@ frontend:
     minReplicas: 2
     maxReplicas: 5
     targetCPUUtilizationPercentage: 50
-  apiUrl: "http://localhost:30025"  # Backend NodePort
+  apiUrl: "http://localhost:30002"  # Backend NodePort
