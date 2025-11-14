@@ -10,16 +10,7 @@ spec:
     - host: {{ .Values.ingress.host }}
       http:
         paths:
-          # Frontend served at /frontend/
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: frontend-deployment-service
-                port:
-                  number: 80
-
-          # Backend served at /backend/
+          # Backend must come FIRST
           - path: /patientapi
             pathType: Prefix
             backend:
@@ -27,4 +18,13 @@ spec:
                 name: backend-deployment-service
                 port:
                   number: 2000
+
+          # Frontend root path LAST
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: frontend-deployment-service
+                port:
+                  number: 80
 {{- end }}
